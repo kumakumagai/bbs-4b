@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903114638) do
+ActiveRecord::Schema.define(version: 20170903145123) do
 
   create_table "article_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "article_id", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170903114638) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id", "comment_id"], name: "index_article_comments_on_article_id_and_comment_id", unique: true
-    t.index ["comment_id"], name: "article_comments_comment_id_fk"
+    t.index ["comment_id"], name: "index_article_comments_on_comment_id", unique: true
   end
 
   create_table "article_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
