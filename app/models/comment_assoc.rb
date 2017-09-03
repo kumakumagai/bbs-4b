@@ -1,0 +1,2 @@
+class CommentAssoc < ApplicationRecord
+end
