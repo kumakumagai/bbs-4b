@@ -4,3 +4,4 @@ ja:
       article:
         title: タイトル
         body: 本文
+        created_at: 作成日時

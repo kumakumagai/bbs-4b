@@ -1,0 +1,23 @@
+<h1 class="blue-text">
+  記事一覧
+</h1>
+<table class="highlight">
+  <thead>
+  <tr>
+    <th><%= I18n.t('activerecord.attributes.article.title') %></th>
+    <th><%= I18n.t('activerecord.attributes.article.created_at') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @articles.each do |article| %>
+  <tr>
+    <td>
+      <a href="<%= article_path(article) %>">
+        <%= article.title %>
+      </a>
+    </td>
+    <td><%= I18n.l(article.created_at) %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,6 +1,7 @@
-ja:
+en:
   active_record:
     attributes:
       article:
         title: title
         body: body
+        created_at: created at
