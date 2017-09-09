@@ -1,0 +1,25 @@
+<h1 class="blue-text">記事作成</h1>
+<div class="row">
+  <% if @article.errors.any? %>
+    <div class="card-panel red white-text">
+      <ul>
+        <% @article.errors.full_messages.each do |m| %>
+            <li><%= m %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_for @article, class: 'col s12' do |f| %>
+  <div class="row">
+      <%= f.label :title, class: 'blue-text' %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="row">
+      <%= f.label :body, class: 'blue-text' %>
+      <%= f.text_area :body, rows: 5 %>
+    </div>
+    <div class="row">
+      <%= f.submit '追加', class: 'btn-floating btn-large waves-effect waves-light blue' %>
+    </div>
+  <% end %>
+</div>

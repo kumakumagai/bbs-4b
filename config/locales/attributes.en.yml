@@ -1,0 +1,6 @@
+ja:
+  active_record:
+    attributes:
+      article:
+        title: title
+        body: body
