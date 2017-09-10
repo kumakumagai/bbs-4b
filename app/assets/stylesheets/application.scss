@@ -24,6 +24,7 @@ $secondary-color: color("yellow", "base") !default;
 
 .page, .first, .prev, .next, .last  {
   margin: 0 0.2em;
+  cursor: pointer;
 }
 
 .first, .prev, .next, .last {
