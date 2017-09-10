@@ -1,0 +1,37 @@
+<h1 class="blue-text">
+  記事詳細
+</h1>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.article.title') %>
+  </div>
+  <div class="col s9">
+    <%= @article.title %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.article.body') %>
+  </div>
+  <div class="col s9">
+    <%= @article.body %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.article.created_at') %>
+  </div>
+  <div class="col s9">
+    <%= I18n.l(@article.created_at) %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.article.updated_at') %>
+  </div>
+  <div class="col s9">
+    <%= I18n.l(@article.updated_at) %>
+  </div>
+</div>
+
+<%= link_to '記事一覧', articles_path %>

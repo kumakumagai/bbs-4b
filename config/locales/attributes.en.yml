@@ -5,3 +5,4 @@ en:
         title: title
         body: body
         created_at: created at
+        updated_at: updated at
