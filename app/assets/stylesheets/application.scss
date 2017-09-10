@@ -17,3 +17,15 @@
 $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("yellow", "base") !default;
 @import "materialize";
+
+.pagination {
+  font-size: 1.1em;
+}
+
+.page, .first, .prev, .next, .last  {
+  margin: 0 0.2em;
+}
+
+.first, .prev, .next, .last {
+  font-size: 1.5em;
+}
