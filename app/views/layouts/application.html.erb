@@ -10,6 +10,13 @@
 
   <body>
     <div class="container">
+      <% if flash.any? %>
+        <div class="card-panel blue lighten-2 white-text">
+          <% flash.each do |k, v| %>
+            <%= v %>
+          <% end %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
   </body>
