@@ -31,3 +31,7 @@ $secondary-color: color("yellow", "base") !default;
 .first, .prev, .next, .last {
   font-size: 1.5em;
 }
+
+.first-link {
+  margin-right: 2em;
+}
