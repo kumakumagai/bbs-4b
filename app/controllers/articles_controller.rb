@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
 
     flash[:success] = '記事を更新しました。'
 
-    redirect_to action: :index
+    redirect_to action: :show
   rescue
     render 'edit'
   end
