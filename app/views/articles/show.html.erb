@@ -34,4 +34,12 @@
   </div>
 </div>
 
-<%= link_to '記事一覧', articles_path %>
+<div class="row">
+  <%= form_for @article, method: 'DELETE' do |f| %>
+    <%= f.submit '削除', class: 'btn-floating btn-large waves-effect waves-light red lighten-2' %>
+  <% end %>
+</div>
+
+<div class="row">
+  <%= link_to '記事一覧', articles_path %>
+</div>

@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.save!
 
+    flash[:success] = '記事を作成しました。'
+
     redirect_to action: :index
   rescue
     render 'new'
@@ -31,6 +33,12 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @article = Article.find(params[:id])
+    @article.destroy!
+    flash[:success] = '記事を削除しました。'
+  rescue
+    flash[:error] = '記事の削除に失敗しました。'
+  ensure
     redirect_to action: :index
   end
 
