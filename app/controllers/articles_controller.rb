@@ -19,22 +19,33 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = find_article(params)
   rescue
     redirect_to action: :index
   end
 
   def edit
-
-  end
-
-  def update
+    @article = find_article(params)
+  rescue
     redirect_to action: :index
   end
 
+  def update
+    @article = find_article(params)
+
+    update_service.update!(@article, article_params)
+
+    flash[:success] = '記事を更新しました。'
+
+    redirect_to action: :index
+  rescue
+    render 'edit'
+  end
+
   def destroy
-    @article = Article.find(params[:id])
+    @article = find_article(params)
     @article.destroy!
+
     flash[:success] = '記事を削除しました。'
   rescue
     flash[:error] = '記事の削除に失敗しました。'
@@ -46,5 +57,13 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body)
+  end
+
+  def find_article(params)
+    Article.find(params[:id])
+  end
+
+  def update_service
+    @update_service ||= ArticleService::UpdateService.new
   end
 end

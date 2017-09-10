@@ -1,0 +1,11 @@
+<h1 class="blue-text">
+  記事編集
+</h1>
+
+<div class="row">
+  <%= render partial: 'form', locals: { method: 'PATCH', button_title: '適用' } %>
+</div>
+
+<div class="row">
+  <%= link_to '記事一覧', articles_path %>
+</div>
