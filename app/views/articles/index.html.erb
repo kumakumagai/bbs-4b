@@ -12,12 +12,16 @@
   <% @articles.each do |article| %>
   <tr>
     <td>
-      <a href="<%= article_path(article) %>">
-        <%= article.title %>
-      </a>
+      <%= link_to article.title, article_path(article) %>
     </td>
-    <td><%= I18n.l(article.created_at) %></td>
+    <td>
+      <%= I18n.l(article.created_at) %>
+    </td>
   </tr>
   <% end %>
   </tbody>
 </table>
+
+<div class="center">
+  <%= paginate @articles %>
+</div>
