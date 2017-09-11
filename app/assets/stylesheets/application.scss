@@ -35,3 +35,7 @@ $secondary-color: color("yellow", "base") !default;
 .first-link {
   margin-right: 2em;
 }
+
+.wrap {
+  white-space: pre-wrap;
+}
