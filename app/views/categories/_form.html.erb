@@ -1,0 +1,18 @@
+<% if @category.errors.any? %>
+    <div class="card-panel red white-text">
+      <ul>
+        <% @category.errors.full_messages.each do |m| %>
+            <li><%= m %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+<%= form_for @category, method: method, class: 'col s12' do |f| %>
+    <div class="row">
+      <%= f.label :name, class: 'blue-text' %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="row">
+      <%= f.submit button_title, class: 'btn-large waves-effect waves-light blue' %>
+    </div>
+<% end %>
