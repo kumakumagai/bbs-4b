@@ -8,3 +8,5 @@ en:
         updated_at: updated at
       category:
         name: name
+        created_at: created at
+        updated_at: updated at
