@@ -1,0 +1,12 @@
+<h1 class="blue-text">
+  タグ編集
+</h1>
+
+<div class="row">
+  <%= render partial: 'form', locals: { method: 'PATCH', button_title: '適用' } %>
+</div>
+
+<div class="row">
+  <%= link_to 'タグ一覧', tags_path, class: 'first-link' %>
+  <%= link_to 'タグ詳細', tag_path(@tag) %>
+</div>
