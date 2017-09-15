@@ -1,0 +1,34 @@
+<h1 class="blue-text">
+  タグ一覧
+</h1>
+<a href="<%= new_tag_path %>"
+   class="btn-floating btn-large waves-effect waves-light green right"
+   title="タグ作成">
+  <i class="material-icons">
+    add
+  </i>
+</a>
+<table class="highlight">
+  <thead>
+  <tr>
+    <th><%= I18n.t('activerecord.attributes.tag.name') %></th>
+    <th><%= I18n.t('activerecord.attributes.tag.created_at') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @tags.each do |tag| %>
+      <tr>
+        <td>
+          <%= link_to tag.name, category_path(tag) %>
+        </td>
+        <td>
+          <%= I18n.l(tag.created_at) %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="center">
+  <%= paginate @tags %>
+</div>
