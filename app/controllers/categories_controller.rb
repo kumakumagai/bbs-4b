@@ -24,6 +24,24 @@ class CategoriesController < ApplicationController
     redirect_to action: :index
   end
 
+  def edit
+    @category = find_category(params)
+  rescue
+    redirect_to action: :index
+  end
+
+  def update
+    @category = find_category(params)
+
+    update_service.update!(@category, category_params)
+
+    flash[:success] = 'カテゴリーを更新しました。'
+
+    redirect_to action: :show
+  rescue
+    render 'edit'
+  end
+
   private
 
   def find_category(params)
@@ -32,5 +50,9 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def update_service
+    @update_service ||= CategoryService::UpdateService.new
   end
 end
