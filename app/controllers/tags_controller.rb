@@ -24,6 +24,24 @@ class TagsController < ApplicationController
     redirect_to action: :index
   end
 
+  def edit
+    @tag = find_tag(params)
+  rescue
+    redirect_to action: :index
+  end
+
+  def update
+    @tag = find_tag(params)
+
+    update_service.update!(@tag, tag_params)
+
+    flash[:success] = 'タグを更新しました。'
+
+    redirect_to action: :show
+  rescue
+    render 'edit'
+  end
+
   private
 
   def find_tag(params)
@@ -32,5 +50,9 @@ class TagsController < ApplicationController
 
   def tag_params
     params.require(:tag).permit(:name)
+  end
+
+  def update_service
+    @tag_service ||= TagService::UpdateService.new
   end
 end

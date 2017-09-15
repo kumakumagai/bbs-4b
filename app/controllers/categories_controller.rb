@@ -42,7 +42,6 @@ class CategoriesController < ApplicationController
     render 'edit'
   end
 
-
   def destroy
     @category = find_category(params)
     @category.destroy!
