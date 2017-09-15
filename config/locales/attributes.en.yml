@@ -10,3 +10,7 @@ en:
         name: name
         created_at: created at
         updated_at: updated at
+      tag:
+        name: 名前
+        created_at: 作成日時
+        updated_at: 作成日時
