@@ -42,6 +42,17 @@ class TagsController < ApplicationController
     render 'edit'
   end
 
+  def destroy
+    @tag = find_tag(params)
+    @tag.destroy!
+
+    flash[:success] = 'タグを削除しました。'
+  rescue
+    flash[:error] = 'タグの削除に失敗しました。'
+  ensure
+    redirect_to action: :index
+  end
+
   private
 
   def find_tag(params)
