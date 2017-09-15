@@ -1,0 +1,42 @@
+<h1 class="blue-text">
+  タグ詳細
+</h1>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.tag.name') %>
+  </div>
+  <div class="col s9">
+    <%= @tag.name %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.tag.created_at') %>
+  </div>
+  <div class="col s9">
+    <%= I18n.l(@tag.created_at) %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.tag.updated_at') %>
+  </div>
+  <div class="col s9">
+    <%= I18n.l(@tag.updated_at) %>
+  </div>
+</div>
+
+<div class="row">
+  <%= link_to '編集', edit_tag_path(@tag), class: 'btn-large waves-effect waves-light blue first-link left' %>
+  <div class="left">
+    <%= form_for @tag, method: 'DELETE' do |f| %>
+        <%= f.submit '削除', class: 'btn-large waves-effect waves-light red lighten-2' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <%= link_to 'タグ一覧', tags_path %>
+</div>
+
+

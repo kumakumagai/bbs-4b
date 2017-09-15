@@ -18,7 +18,17 @@ class TagsController < ApplicationController
     render 'new'
   end
 
+  def show
+    @tag = find_tag(params)
+  rescue
+    redirect_to action: :index
+  end
+
   private
+
+  def find_tag(params)
+    Tag.find(params[:id])
+  end
 
   def tag_params
     params.require(:tag).permit(:name)
