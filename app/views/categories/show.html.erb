@@ -1,0 +1,42 @@
+<h1 class="blue-text">
+  カテゴリー詳細
+</h1>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.category.name') %>
+  </div>
+  <div class="col s9">
+    <%= @category.name %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.category.created_at') %>
+  </div>
+  <div class="col s9">
+    <%= I18n.l(@category.created_at) %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s3">
+    <%= I18n.t('activerecord.attributes.category.updated_at') %>
+  </div>
+  <div class="col s9">
+    <%= I18n.l(@category.updated_at) %>
+  </div>
+</div>
+
+<div class="row">
+  <%= link_to '編集', edit_category_path(@category), class: 'btn-large waves-effect waves-light blue first-link left' %>
+  <div class="left">
+    <%= form_for @category, method: 'DELETE' do |f| %>
+        <%= f.submit '削除', class: 'btn-large waves-effect waves-light red lighten-2' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <%= link_to '記事一覧', categories_path %>
+</div>
+
+
