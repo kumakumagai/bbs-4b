@@ -18,7 +18,17 @@ class CategoriesController < ApplicationController
     render 'new'
   end
 
+  def show
+    @category = find_category(params)
+  rescue
+    redirect_to action: :index
+  end
+
   private
+
+  def find_category(params)
+    Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)
