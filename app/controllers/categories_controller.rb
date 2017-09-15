@@ -42,6 +42,18 @@ class CategoriesController < ApplicationController
     render 'edit'
   end
 
+
+  def destroy
+    @category = find_category(params)
+    @category.destroy!
+
+    flash[:success] = 'カテゴリーを削除しました。'
+  rescue
+    flash[:error] = 'カテゴリーの削除に失敗しました。'
+  ensure
+    redirect_to action: :index
+  end
+
   private
 
   def find_category(params)
