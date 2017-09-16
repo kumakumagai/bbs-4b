@@ -16,9 +16,15 @@
         <div class="nav-wrapper">
           <a href="#" class="brand-logo center">掲示板</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="<%= articles_path %>">記事</a></li>
-            <li><a href="<%= categories_path %>">カテゴリー</a></li>
-            <li><a href="<%= tags_path %>">タグ</a></li>
+            <li>
+              <%= link_to '記事', articles_path %>
+            </li>
+            <li>
+              <%= link_to 'カテゴリー', categories_path %>
+            </li>
+            <li>
+              <%= link_to 'タグ', tags_path %>
+            </li>
           </ul>
           <ul id="nav-mobile" class="left show-on-medium-and-down hide-on-large-only">
             <li>
@@ -35,6 +41,30 @@
               <a href="<%= tags_path %>" title="タグ">
                 <i class="fa fa-tag"></i>
               </a>
+            </li>
+          </ul>
+
+
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <% if user_signed_in? %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+              <% else %>
+                <%= link_to 'ログイン', new_session_path(:user) %>
+              <% end %>
+            </li>
+          </ul>
+          <ul class="right show-on-medium-and-down hide-on-large-only">
+            <li>
+              <% if user_signed_in? %>
+                <a href="<%= destroy_user_session_path %>" data-method="delete" title="ログアウト">
+                  <i class="fa fa-sign-out"></i>
+                </a>
+              <% else %>
+                <a href="<%= new_session_path(:user) %>" title="ログイン">
+                  <i class="fa fa-sign-in"></i>
+                </a>
+              <% end %>
             </li>
           </ul>
         </div>
