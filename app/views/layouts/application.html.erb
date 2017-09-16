@@ -6,9 +6,40 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
 
   <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo center">掲示板</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="<%= articles_path %>">記事</a></li>
+            <li><a href="<%= categories_path %>">カテゴリー</a></li>
+            <li><a href="<%= tags_path %>">タグ</a></li>
+          </ul>
+          <ul id="nav-mobile" class="left show-on-medium-and-down hide-on-large-only">
+            <li>
+              <a href="<%= articles_path %>" title="記事">
+                <i class="fa fa-file-text-o"></i>
+              </a>
+            </li>
+            <li>
+              <a href="<%= categories_path %>" title="カテゴリー">
+                <i class="fa fa-pie-chart"></i>
+              </a>
+            </li>
+            <li>
+              <a href="<%= tags_path %>" title="タグ">
+                <i class="fa fa-tag"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
     <div class="container">
       <% if flash.any? %>
         <div class="card-panel blue lighten-2 white-text">
