@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+email = 'bbs_admin@example.com'
+
+{ email: email, password: 'Pass@bbs4' }.tap do |user|
+  User.create!(user) unless User.exists?(email: email)
+end
