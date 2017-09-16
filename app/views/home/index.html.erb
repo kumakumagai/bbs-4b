@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+    <h1>設定</h1>
+    <div class="row">
+      <strong><%= current_user.email %></strong>でログインしています。
+    </div>
+    <div class="row">
+      <%= link_to "ユーザー編集", edit_user_registration_path %> |
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </div>
+<% else %>
+    <h1>ログイン</h1>
+    <%= link_to "ログイン", new_user_session_path, :class => 'navbar-link' %>
+<% end %>

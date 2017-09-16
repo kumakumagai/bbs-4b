@@ -1,0 +1,35 @@
+<h2><%= t('.title', resource: resource_class.model_name.human) %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="row field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <p>
+      <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
+    </p>
+  <% end %>
+
+  <div class="row field">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="row field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="row field">
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password %>
+  </div>
+
+  <div class="row"><%= f.submit t('.update'), class: 'btn-large waves-effect waves-light blue' %></div>
+<% end %>
+
+<%= link_to t('devise.shared.links.back'), :back %>
