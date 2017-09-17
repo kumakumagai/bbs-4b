@@ -4,8 +4,10 @@
   <%= devise_error_messages! %>
 
   <div class="row field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <div class="input-field col s12">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
   </div>
 
   <div class="row actions">
