@@ -2,7 +2,13 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @articles = Article.page(params[:page])
+    @articles = index_service.articles(params)
+
+    @category_ids = index_service.category_ids || []
+    @tag_ids      = index_service.tag_ids || []
+
+    @categories = Category.names_and_ids
+    @tags       = Tag.names_and_ids
   end
 
   def new
@@ -101,5 +107,9 @@ class ArticlesController < ApplicationController
 
   def update_service
     @update_service ||= ArticleService::UpdateService.new
+  end
+
+  def index_service
+    @index_service ||= ArticleService::IndexService.new
   end
 end
