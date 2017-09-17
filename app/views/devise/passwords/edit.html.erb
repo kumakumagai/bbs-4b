@@ -5,17 +5,23 @@
   <%= f.hidden_field :reset_password_token %>
 
   <div class="row field">
-    <%= f.label :password, t('.new_password') %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <div class="input-field col s12">
+      <%= f.label :password, t('.new_password') %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
   </div>
 
   <div class="row field">
-    <%= f.label :password_confirmation, t('.confirm_new_password') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <div class="input-field col s12">
+      <%= f.label :password_confirmation, t('.confirm_new_password') %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
   </div>
 
   <div class="row actions">
-    <%= f.submit t('.change_my_password'), class: 'btn-large waves-effect waves-light blue' %>
+    <div class="col s12">
+      <%= f.submit t('.change_my_password'), class: 'btn-large waves-effect waves-light blue' %>
+    </div>
   </div>
 <% end %>
 
