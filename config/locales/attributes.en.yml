@@ -1,5 +1,9 @@
 en:
   activerecord:
+    models:
+      article: article
+      category: category
+      tag: tag
     attributes:
       article:
         title: title

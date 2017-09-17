@@ -9,14 +9,36 @@
 <% end %>
 <%= form_for @article, method: method, class: 'col s12' do |f| %>
     <div class="row">
-      <%= f.label :title, class: 'blue-text' %>
-      <%= f.text_field :title %>
+      <div class="input-field col s12">
+        <%= f.label :title, class: 'blue-text' %>
+        <%= f.text_field :title %>
+      </div>
     </div>
     <div class="row">
-      <%= f.label :body, class: 'blue-text' %>
-      <%= f.text_area :body, rows: 5 %>
+      <div class="input-field col s12">
+        <%= f.label :body, class: 'blue-text' %>
+        <%= f.text_area :body, rows: 5 %>
+      </div>
     </div>
     <div class="row">
-      <%= f.submit button_title, class: 'btn-large waves-effect waves-light blue' %>
+      <div class="input-field col s12">
+        <%= select :article_categories, :category_id, @categories, {}, multiple: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= select :article_tags, :tag_id, @tags, {}, multiple: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <%= f.submit button_title, class: 'btn-large waves-effect waves-light blue' %>
+      </div>
     </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+      $('select').material_select();
+  });
+</script>

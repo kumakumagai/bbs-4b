@@ -1,5 +1,9 @@
 ja:
   activerecord:
+    models:
+      article: 記事
+      category: カテゴリー
+      tag: タグ
     attributes:
       article:
         title: タイトル

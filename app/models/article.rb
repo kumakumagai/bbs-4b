@@ -6,6 +6,9 @@ class Article < ApplicationRecord
   has_many :article_comments, dependent: :destroy
   has_many :comments, through: :article_comments
 
+  accepts_nested_attributes_for :article_categories
+  accepts_nested_attributes_for :article_tags
+
   validates :title, presence: true, length: { maximum: 100  }
   validates :body,  presence: true, length: { maximum: 5000 }
 end

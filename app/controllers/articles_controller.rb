@@ -6,17 +6,32 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article    = Article.new
+
+    @article.article_categories.build
+    @article.article_tags.build
+
+    @categories = Category.names_and_ids
+    @tags       = Tag.names_and_ids
   end
 
   def create
     @article = Article.new(article_params)
-    @article.save!
+
+    ActiveRecord::Base.transaction do
+      @article.save!
+
+      create_service.create_categories!(params, @article)
+
+      create_service.create_tags!(params, @article)
+    end
 
     flash[:success] = '記事を作成しました。'
 
     redirect_to action: :index
   rescue
+    @categories = Category.names_and_ids
+    @tags       = Tag.names_and_ids
     render 'new'
   end
 
@@ -63,6 +78,10 @@ class ArticlesController < ApplicationController
 
   def find_article(params)
     Article.find(params[:id])
+  end
+
+  def create_service
+    @update_service ||= ArticleService::CreateService.new
   end
 
   def update_service
