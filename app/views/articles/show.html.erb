@@ -30,7 +30,7 @@
     <%= I18n.t('activerecord.attributes.article.article_tags') %>
   </div>
   <div class="col s9">
-    <div class="wrap"><%= @article.tags.pluck(:name).join(',') %></div>
+    <div class="wrap"><%= @article.tags.pluck(:name).join(', ') %></div>
   </div>
 </div>
 <div class="row">
