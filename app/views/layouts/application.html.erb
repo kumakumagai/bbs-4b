@@ -14,17 +14,19 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo center">掲示板</a>
+          <%= link_to '掲示板', articles_path, class: 'brand-logo center' %>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li>
               <%= link_to '記事', articles_path %>
             </li>
+            <% if user_signed_in? %>
             <li>
               <%= link_to 'カテゴリー', categories_path %>
             </li>
             <li>
               <%= link_to 'タグ', tags_path %>
             </li>
+            <% end %>
           </ul>
           <ul id="nav-mobile" class="left show-on-medium-and-down hide-on-large-only">
             <li>
@@ -32,6 +34,7 @@
                 <i class="fa fa-file-text-o"></i>
               </a>
             </li>
+            <% if user_signed_in? %>
             <li>
               <a href="<%= categories_path %>" title="カテゴリー">
                 <i class="fa fa-pie-chart"></i>
@@ -42,6 +45,7 @@
                 <i class="fa fa-tag"></i>
               </a>
             </li>
+            <% end %>
           </ul>
 
 
