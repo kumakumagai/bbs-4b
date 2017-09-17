@@ -22,12 +22,12 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <%= select :article_categories, :category_id, @categories, {}, multiple: true %>
+        <%= select :article_categories, :category_id, @categories, { selected: @article.article_categories.pluck(:category_id) }, multiple: true  %>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <%= select :article_tags, :tag_id, @tags, {}, multiple: true %>
+        <%= select :article_tags, :tag_id, @tags, {  selected: @article.article_tags.pluck(:tag_id) }, multiple: true %>
       </div>
     </div>
     <div class="row">

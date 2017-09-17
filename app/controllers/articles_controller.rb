@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article    = Article.new
+    @article = Article.new
 
     @article.article_categories.build
     @article.article_tags.build
@@ -32,6 +32,7 @@ class ArticlesController < ApplicationController
   rescue
     @categories = Category.names_and_ids
     @tags       = Tag.names_and_ids
+
     render 'new'
   end
 
@@ -43,6 +44,9 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = find_article(params)
+
+    @categories = Category.names_and_ids
+    @tags       = Tag.names_and_ids
   rescue
     redirect_to action: :index
   end
@@ -50,12 +54,23 @@ class ArticlesController < ApplicationController
   def update
     @article = find_article(params)
 
-    update_service.update!(@article, article_params)
+    ActiveRecord::Base.transaction do
+      update_service.update!(@article, article_params)
+
+      update_service.destroy_categories(@article)
+      create_service.create_categories!(params, @article)
+
+      update_service.destroy_tags(@article)
+      create_service.create_tags!(params, @article)
+    end
 
     flash[:success] = '記事を更新しました。'
 
     redirect_to action: :show
   rescue
+    @categories = Category.names_and_ids
+    @tags       = Tag.names_and_ids
+
     render 'edit'
   end
 
@@ -81,7 +96,7 @@ class ArticlesController < ApplicationController
   end
 
   def create_service
-    @update_service ||= ArticleService::CreateService.new
+    @create_service ||= ArticleService::CreateService.new
   end
 
   def update_service
