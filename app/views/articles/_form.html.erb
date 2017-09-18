@@ -21,13 +21,15 @@
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s12">
-        <%= select :article_categories, :category_id, @categories, { selected: @article.article_categories.pluck(:category_id) }, multiple: true  %>
+      <div class="col s12">
+        <%= label_tag 'カテゴリー', nil, class: 'blue-text' %>
+        <%= select :article_categories, :category_id, @categories, { include_blank: true, selected: @article.article_categories.pluck(:category_id) }, multiple: true  %>
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s12">
-        <%= select :article_tags, :tag_id, @tags, {  selected: @article.article_tags.pluck(:tag_id) }, multiple: true %>
+      <div class="col s12">
+        <%= label_tag 'タグ', nil, class: 'blue-text' %>
+        <%= select :article_tags, :tag_id, @tags, { include_blank: true, selected: @article.article_tags.pluck(:tag_id) }, multiple: true %>
       </div>
     </div>
     <div class="row">
