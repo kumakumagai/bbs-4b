@@ -22,7 +22,9 @@
     <%= I18n.t('activerecord.attributes.article.article_categories') %>
   </div>
   <div class="col s9">
-    <div class="wrap"><%= @article.categories.pluck(:name).join(', ') %></div>
+    <div>
+      <%= @article.categories.pluck(:name).join(', ') %>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -30,7 +32,9 @@
     <%= I18n.t('activerecord.attributes.article.article_tags') %>
   </div>
   <div class="col s9">
-    <div class="wrap"><%= @article.tags.pluck(:name).join(', ') %></div>
+    <div>
+      <%= @article.tags.pluck(:name).join(', ') %>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -61,8 +65,9 @@
   </div>
 <% end %>
 
+<%= render partial: 'comments' %>
+
 <div class="row">
   <%= link_to '記事一覧', articles_path %>
 </div>
-
 
