@@ -44,6 +44,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = find_article(params)
+
+    @comment  = Comment.new
+    @comments = Comment.includes(:article_comment).where(article_comments: { article_id: @article.id })
   rescue
     redirect_to action: :index
   end

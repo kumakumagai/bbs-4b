@@ -4,6 +4,7 @@ en:
       article: article
       category: category
       tag: tag
+      comment: comment
     attributes:
       article:
         title: title
@@ -20,3 +21,6 @@ en:
         name: name
         created_at: created at
         updated_at: updated at
+      comment:
+        username: name
+        body: comment

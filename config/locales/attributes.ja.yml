@@ -4,6 +4,7 @@ ja:
       article: 記事
       category: カテゴリー
       tag: タグ
+      comment: コメント
     attributes:
       article:
         title: タイトル
@@ -20,3 +21,6 @@ ja:
         name: 名前
         created_at: 作成日時
         updated_at: 更新日時
+      comment:
+        username: 名前
+        body: コメント
