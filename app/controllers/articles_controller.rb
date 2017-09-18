@@ -46,7 +46,13 @@ class ArticlesController < ApplicationController
     @article = find_article(params)
 
     @comment  = Comment.new
-    @comments = Comment.includes(:article_comment).where(article_comments: { article_id: @article.id })
+    @comments = Comment.includes(:article_comment).
+        where(article_comments: { article_id: @article.id }).
+        where.not(id: CommentAssoc.pluck(:child_id))
+
+    @reply_comments = ArticleCommentAssoc.
+        where(article_id: @article.id).
+        where.not(parent_id: nil)
   rescue
     redirect_to action: :index
   end

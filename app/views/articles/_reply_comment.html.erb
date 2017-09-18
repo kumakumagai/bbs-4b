@@ -1,0 +1,8 @@
+<% Comment.find_by(id: comment.id).child_comments.each do |reply| %>
+    <div class="reply-comment">
+      <%= render partial: 'show_comment', locals: { comment: reply } %>
+      <%= render partial: 'reply_button' %>
+      <%= render partial: 'reply_form', locals: { new_comment: @comment, comment: reply, article: @article } %>
+      <%= render partial: 'reply_comment', locals: { comment: reply } %>
+    </div>
+<% end %>

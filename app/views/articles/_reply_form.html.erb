@@ -1,0 +1,10 @@
+<div class="row reply-form hide">
+  <div class="col s12">
+    <%= form_for new_comment, method: 'POST' do |f| %>
+        <%= render partial: 'comment_fields', locals: { f: f } %>
+        <%= hidden_field_tag :article_id, article.id %>
+        <%= hidden_field_tag :comment_id, comment.id %>
+        <%= f.submit '送信', class: 'btn-large blue waves-effect waves-light' %>
+    <% end %>
+  </div>
+</div>
