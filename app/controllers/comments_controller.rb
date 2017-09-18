@@ -3,9 +3,7 @@ class CommentsController < ApplicationController
     create_service.create_comment!(params, comment_params)
 
     flash[:success] = 'コメントしました。'
-  rescue => e
-    p e
-    p e.backtrace
+  rescue
     flash[:error] = 'コメントに失敗しました。'
   ensure
     redirect_to article_path(params[:article_id])
