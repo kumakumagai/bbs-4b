@@ -21,14 +21,21 @@
       <% end %>
     </ol>
     <%= form_for @comment, method: 'POST' do |f| %>
-      <div class="input-field">
-        <%= f.label I18n.t('activerecord.attributes.comment.username') %>
-        <%= f.text_field :username %>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.label I18n.t('activerecord.attributes.comment.username') %>
+          <%= f.text_field :username %>
+        </div>
       </div>
-      <div class="input-field">
-        <%= f.label I18n.t('activerecord.attributes.comment.body') %>
-        <%= f.text_area :body %>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.label I18n.t('activerecord.attributes.comment.body') %>
+          <%= f.text_area :body %>
+          <%= hidden_field_tag :article_id, @article.id %>
+        </div>
       </div>
+      <%= f.submit '送信', class: 'btn-large blue waves-effect waves-light' %>
     <% end %>
   </div>
 </div>
