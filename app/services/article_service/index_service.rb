@@ -8,7 +8,7 @@ module ArticleService
 
       @category_ids&.delete('')
 
-      @category_ids ? { article_categories: { category_id: @category_ids } } : {}
+      @category_ids.present? ? { article_categories: { category_id: @category_ids } } : {}
     end
 
     def tag_condition(params)
@@ -16,7 +16,7 @@ module ArticleService
 
       @tag_ids&.delete('')
 
-      @tag_ids ? { article_tags: { tag_id: @tag_ids } } : {}
+      @tag_ids.present? ? { article_tags: { tag_id: @tag_ids } } : {}
     end
 
     def articles(params)
