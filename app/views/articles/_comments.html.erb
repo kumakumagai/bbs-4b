@@ -6,32 +6,16 @@
     <ol>
       <% @comments.each do |comment| %>
       <li>
-        <div>
-          <%= comment.username %>
-        </div>
-        <div class="row">
-          <div class="col s12 wrap"><%= comment.body %></div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <%= I18n.l(comment.created_at) %>
+        <%= render partial: 'show_comment', locals: { comment: comment } %>
+        <%= render partial: 'reply_button' %>
+        <%= render partial: 'reply_form', locals: { new_comment: @comment, comment: comment, article: @article } %>
+        <% Comment.find_by(id: comment.id).child_comments.each do |reply| %>
+          <div class="reply-comment">
+            <%= render partial: 'show_comment', locals: { comment: reply } %>
+            <%= render partial: 'reply_button' %>
+            <%= render partial: 'reply_form', locals: { new_comment: @comment, comment: reply, article: @article } %>
           </div>
-        </div>
-        <div class="row">
-          <a class="btn teal lighten-1 waves-effect waves-light" onclick="toggleReplyForm(this)">
-            <i class="material-icons">reply</i>
-          </a>
-        </div>
-        <div class="row reply-form hide">
-          <div class="col s12">
-            <%= form_for @comment, method: 'POST' do |f| %>
-              <%= render partial: 'comment_fields', locals: { f: f } %>
-              <%= hidden_field_tag :article_id, @article.id %>
-              <%= hidden_field_tag :comment_id, comment.id %>
-              <%= f.submit '送信', class: 'btn-large blue waves-effect waves-light' %>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       </li>
       <% end %>
     </ol>

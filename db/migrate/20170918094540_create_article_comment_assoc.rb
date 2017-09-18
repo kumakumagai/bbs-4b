@@ -3,11 +3,11 @@ class CreateArticleCommentAssoc < ActiveRecord::Migration[5.1]
     execute <<-SQL
 CREATE VIEW article_comment_assoc AS
   SELECT
+    c.id,
     c.username,
     c.body,
     c.created_at,
     ac.article_id,
-    ac.comment_id,
     ca.parent_id,
     ca.child_id
   FROM comments c

@@ -46,11 +46,11 @@ class ArticlesController < ApplicationController
     @article = find_article(params)
 
     @comment  = Comment.new
-    @comments = ArticleCommentAssoc.where(article_id: @article.id, parent_id: nil)
+    @comments = ArticleCommentAssoc.where(article_id: @article.id)
 
     @reply_comments = ArticleCommentAssoc.
-        where(article_id: @article.id).where.not(parent_id: nil).
-        group_by(&:parent_id)
+        where(article_id: @article.id).
+        where.not(parent_id: nil)
   rescue
     redirect_to action: :index
   end
