@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916055659) do
+ActiveRecord::Schema.define(version: 20170918054346) do
 
   create_table "article_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "article_id", null: false
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20170916055659) do
   add_foreign_key "article_categories", "articles", name: "article_categories_article_id_fk"
   add_foreign_key "article_categories", "categories", name: "article_categories_category_id_fk"
   add_foreign_key "article_comments", "articles", name: "article_comments_article_id_fk"
-  add_foreign_key "article_comments", "tags", column: "comment_id", name: "article_comments_comment_id_fk"
+  add_foreign_key "article_comments", "comments", name: "article_comments_comment_id_fk"
   add_foreign_key "article_tags", "articles", name: "article_tags_article_id_fk"
   add_foreign_key "article_tags", "tags", name: "article_tags_tag_id_fk"
   add_foreign_key "comment_assocs", "comments", column: "child_id", name: "comment_assocs_child_id_fk"
