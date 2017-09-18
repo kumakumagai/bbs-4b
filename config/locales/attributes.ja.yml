@@ -24,3 +24,5 @@ ja:
       comment:
         username: 名前
         body: コメント
+      article_comment:
+        comment: コメント

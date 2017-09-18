@@ -24,3 +24,5 @@ en:
       comment:
         username: name
         body: comment
+      article_comment:
+        comment: comment
